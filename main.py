@@ -90,7 +90,6 @@ async def on_message(message):
       await message.channel.send(answer)
 
     if message.content.startswith('$bday list'):
-      members = client.guilds[0].members
       keys = db.keys()
       answer = 'All birthdays I know: \n'
       for user_id in keys:
