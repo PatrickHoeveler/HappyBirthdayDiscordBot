@@ -30,7 +30,7 @@ async def change_status():
   # print(current_year)
   entries = get_all_entries()
   keys = entries.keys()
-  channel = client.get_channel(873501285482106940)
+  channel = client.get_channel(os.getenv('CHANNEL'))
   now = datetime.now()
 
   current_time = now.strftime("%H:%M:%S")[:-3]
