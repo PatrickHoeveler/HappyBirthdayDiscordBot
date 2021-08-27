@@ -82,7 +82,7 @@ async def on_message(message):
       await message.channel.send(answer)
 
     if message.content.startswith('$bday help'):
-      answer='Here are all possible commands || biatch ||: \n'
+      answer='Here are all possible commands || friend ||: \n'
       answer += "> **$bday help**: list all possible commands \n"
       answer += "> **$bday setmy 01.01.2021**: sets your birthday to the date (dd.mm.yyyy) \n"
       answer += "> **$bday setfor @user 01.01.2021**: sets the birthday for a tagged user \n"
