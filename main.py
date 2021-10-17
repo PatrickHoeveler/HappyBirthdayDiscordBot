@@ -12,7 +12,9 @@ client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-    change_status.start()
+    channel = client.get_channel(873501285482106940)
+    print('channel', channel)
+    change_status.start(channel)
     print('We have logged in as {0.user}'.format(client))
 
 def get_all_entries():
@@ -23,18 +25,21 @@ def get_all_entries():
   return results
 
 
+
+
+
+
 @tasks.loop(minutes=1)
-async def change_status():
+async def change_status(channel):
   today = date.today().strftime("%d.%m")
   current_year = int(date.today().strftime("%Y"))
   # print(current_year)
   entries = get_all_entries()
   keys = entries.keys()
-  channel = client.get_channel(os.getenv('CHANNEL'))
   now = datetime.now()
-
+  # print(channel)
   current_time = now.strftime("%H:%M:%S")[:-3]
-  # print("Current Time =", current_time)
+  print("Current Time =", current_time)
   # compare all bdays to today
   for key in keys:
     bday = entries[key]
@@ -48,7 +53,8 @@ async def change_status():
       message += "We've already survived **" + str(age) + "** years with you on our planet. \n"
       message += "Hopefully there will be many more!"
       # print(message)
-      if(current_time=="12:00"):
+      print(current_time)
+      if(current_time=="17:00"):
         await channel.send(message)
   # print('entries', entries)
 
